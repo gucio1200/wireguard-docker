@@ -1,4 +1,4 @@
-FROM agners/archlinuxarm-arm32v7:latest
+FROM arm32v7/alpine:latest
 
 # Install wireguard packges
 RUN apk --no-cache add wireguard-tools iptables
