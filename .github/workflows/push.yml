@@ -31,9 +31,11 @@ jobs:
       - name: Run Buildx
         run: |
           for file in ${{ matrix.Dockerfiles }}; do \
-            docker buildx build \
+            tag=$(echo $file | sed -i 's|Dockerfile.||g') \
+             && docker buildx build \
             --platform linux/arm/v7 \
             --output "type=image,push=false" \
+            --tag $tag \
             --file $file . ;\
           done
           
